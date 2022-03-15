@@ -24,7 +24,7 @@ tasks:
           - update_config
 
   update_config:
-    action: mock-cloud-provider.update_config
+    action: mock_cloud_provider.update_config
     input:
       key: <% ctx().key_name %>
       server_id: <% ctx().server_id %>
