@@ -26,7 +26,7 @@ class UpdateConfigAction(Action):
           server_object["num_servers"] = num_servers
         else:
           servers_object[server_id] = {
-            "numServers": num_servers
+            "num_servers": num_servers
           }
 
       self.client.keys.update(KeyValuePair(name=key_name, value=json.dumps(servers_object)))
