@@ -28,7 +28,7 @@ tasks:
     input:
       key: <% ctx().key_name %>
       server_id: <% ctx().server_id %>
-      numServers: <% ctx().num_servers %>
+      num_servers: <% ctx().num_servers %>
     next:
       - when: <% succeeded() %>
         publish:
