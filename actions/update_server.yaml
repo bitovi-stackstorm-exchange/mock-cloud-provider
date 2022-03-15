@@ -3,7 +3,7 @@
 name: update_server
 description: Update server
 runner_type: orquesta
-entry_point: workflows/update_servers.yaml
+entry_point: workflows/update_server.yaml
 enabled: true
 parameters:
   server_id:
