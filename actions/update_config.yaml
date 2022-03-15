@@ -7,9 +7,9 @@ entry_point: update_config.py
 enabled: true
 parameters:
   num_servers:
-    type: integer
+    type: string
   server_id:
-    type: integer
+    type: string
     required: true
   key_name:
     type: string
