@@ -6,7 +6,7 @@ input:
   - key_name
   - num_servers
 vars:
-  - server_id
+  - server_id: ""
 
 output:
   - server_id: <% ctx().server_id %>
