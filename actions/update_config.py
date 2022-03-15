@@ -20,7 +20,7 @@ class UpdateConfigAction(Action):
       if action == "delete":
         del servers_object[server_id]
       else:
-        server_object = servers_object.get(server_id, default = None)
+        server_object = servers_object.get(server_id)
 
         if server_object:
           server_object["num_servers"] = num_servers
