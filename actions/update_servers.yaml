@@ -1,9 +1,9 @@
 # provide number of servers
 ---
-name: update-servers
+name: update_servers
 description: Update servers
 runner_type: orquesta
-entry_point: workflows/update-servers.yaml
+entry_point: workflows/update_servers.yaml
 enabled: true
 parameters:
   num_servers:
