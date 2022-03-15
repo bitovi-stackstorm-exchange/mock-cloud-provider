@@ -19,11 +19,11 @@ tasks:
     next:
       - when: <% succeeded() and server_id = None %>
         publish:
-          - data: <% result().result.servers %>
+          - data: <% result() %>
           - published: "notify"
       - when: <% succeeded() and server_id != None %>
         publish:
-          - data: <% result().result.servers %>
+          - data: <% result() %>
           - published: "publish_server"
   #       do:
   #         - publish_server
