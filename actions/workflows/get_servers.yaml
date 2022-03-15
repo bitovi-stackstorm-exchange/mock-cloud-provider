@@ -15,12 +15,12 @@ tasks:
     input:
       key: <% ctx().key_name %>
     next:
-      - when: <% succeeded() and server_id = "" %>
+      - when: <% succeeded() and server_id = None %>
         publish:
           - result: <% result().result.servers %>
         do:
           - notify
-      - when: <% succeeded() and server_id != "" %>
+      - when: <% succeeded() and server_id != None %>
         publish:
           - servers: <% result().result.servers %>
         do:
