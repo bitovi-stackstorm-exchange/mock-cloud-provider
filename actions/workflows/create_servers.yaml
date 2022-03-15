@@ -34,7 +34,7 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          - servers: <% result().servers %>
+          - servers: <% result().result.servers %>
         do:
           - notify
           

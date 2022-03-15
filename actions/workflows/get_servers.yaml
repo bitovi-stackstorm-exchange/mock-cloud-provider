@@ -17,12 +17,12 @@ tasks:
     next:
       - when: <% succeeded() and server_id = "" %>
         publish:
-          - result: <% result().servers %>
+          - result: <% result().result.servers %>
         do:
           - notify
       - when: <% succeeded() and server_id != "" %>
         publish:
-          - servers: <% result().servers %>
+          - servers: <% result().result.servers %>
         do:
           - publish_server
 
@@ -31,7 +31,7 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          result: <% ctx().servers.[server_id] %>
+          result: <% ctx().servers[server_id] %>
         do:
           - notify
 
