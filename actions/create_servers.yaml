@@ -7,7 +7,7 @@ enabled: true
 parameters:
   num_servers:
     required: true
-    type: integer
+    type: string
   key_name:
     type: string
     default: mock-cloud-provider-serverdata

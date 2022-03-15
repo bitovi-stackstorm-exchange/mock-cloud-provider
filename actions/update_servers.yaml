@@ -8,9 +8,9 @@ enabled: true
 parameters:
   num_servers:
     required: true
-    type: integer
+    type: string
   server_id:
-    type: integer
+    type: string
   key_name:
     type: string
     default: mock-cloud-provider-serverdata

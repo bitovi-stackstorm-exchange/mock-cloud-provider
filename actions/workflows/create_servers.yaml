@@ -21,7 +21,7 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          - server_id: <% result().stdout %>
+          - server_id: <% str(result().stdout) %>
         do:
           - update_config
 
