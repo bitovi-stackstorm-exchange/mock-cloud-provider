@@ -8,6 +8,7 @@ input:
 
 output:
   - result: <% ctx().result %>
+  - server_id: <% ctx().server_id %>
 
 tasks:
   get_servers:
@@ -18,11 +19,13 @@ tasks:
       - when: <% succeeded() and server_id = None %>
         publish:
           - result: <% result().result.servers %>
+          - published: "notify"
         do:
           - notify
       - when: <% succeeded() and server_id != None %>
         publish:
           - servers: <% result().result.servers %>
+          - published: "publish_server"
         do:
           - publish_server
 
@@ -31,7 +34,8 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          result: <% ctx().servers.get(server_id) %>
+          # result: <% ctx().servers.get(server_id) %>
+          result: <% ctx().servers %>
         do:
           - notify
 
