@@ -1,9 +1,9 @@
 # Update the config
 ---
-name: update-config
+name: update_config
 description: Update server config
 runner_type: python-script
-entry_point: update-config.py
+entry_point: update_config.py
 enabled: true
 parameters:
   num_servers:

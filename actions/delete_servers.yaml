@@ -1,11 +1,11 @@
 ---
-name: create-servers
-description: Create servers
+name: delete_servers
+description: Update servers
 runner_type: orquesta
-entry_point: workflows/create-servers.yaml
+entry_point: workflows/delete_servers.yaml
 enabled: true
 parameters:
-  num_servers:
+  server_id:
     required: true
     type: integer
   key_name:

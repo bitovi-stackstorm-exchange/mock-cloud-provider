@@ -1,10 +1,10 @@
 # if serverId provided, return server
 # else, return servers list
 ---
-name: get-servers
+name: get_servers
 description: Get servers. If serverId provided, return one server. Else, return all.
 runner_type: orquesta
-entry_point: workflows/get-servers.yaml
+entry_point: workflows/get_servers.yaml
 enabled: true
 parameters:
   server_id:
