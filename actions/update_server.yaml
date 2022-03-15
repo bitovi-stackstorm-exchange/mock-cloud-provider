@@ -1,4 +1,4 @@
-# provide number of servers
+# update server state
 ---
 name: update_server
 description: Update server
