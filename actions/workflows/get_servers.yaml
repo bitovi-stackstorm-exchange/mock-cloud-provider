@@ -9,7 +9,6 @@ input:
 output:
   - data: <% ctx().data %>
   - server_id: <% ctx().server_id %>
-  - published: <% ctx().published %>
 
 tasks:
   get_servers:
@@ -20,20 +19,18 @@ tasks:
       - when: <% succeeded() and ctx().server_id = null %>
         publish:
           - data: <% result().result %>
-          - published: "notify"
       - when: <% succeeded() and ctx().server_id != null %>
         publish:
-          - data: <% result().result %>
-          - published: "publish_server"
-  #       do:
-  #         - publish_server
+          - servers: <% result().result %>
+        do:
+          - publish_server
 
-  # publish_server:
-  #   action: core.noop
-  #   next:
-  #     - when: <% succeeded() %>
-  #       publish:
-  #         # data: <% ctx().servers.get(server_id) %>
-  #         data: <% ctx().servers %>
-  #       do:
-  #         - notify
+  publish_server:
+    action: core.noop
+    next:
+      - when: <% succeeded() %>
+        publish:
+          # data: <% ctx().servers.get(server_id) %>
+          data: <% ctx().servers %>
+        do:
+          - notify
