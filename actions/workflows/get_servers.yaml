@@ -17,11 +17,11 @@ tasks:
     input:
       key: <% ctx().key_name %>
     next:
-      - when: <% succeeded() and server_id = null %>
+      - when: <% succeeded() and ctx().server_id = null %>
         publish:
           - data: <% result().result %>
           - published: "notify"
-      - when: <% succeeded() and server_id != null %>
+      - when: <% succeeded() and ctx().server_id != null %>
         publish:
           - data: <% result().result %>
           - published: "publish_server"
