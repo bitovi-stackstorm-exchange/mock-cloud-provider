@@ -7,7 +7,7 @@ input:
   - key_name
 
 output:
-  - data: <% ctx().res %>
+  - data: <% ctx().data %>
   - server_id: <% ctx().server_id %>
 
 tasks:
@@ -38,8 +38,3 @@ tasks:
           data: <% ctx().servers %>
         do:
           - notify
-
-  notify:
-    action: core.echo
-    input:
-      message: "Got server updated with id <% ctx().server_id %>."
