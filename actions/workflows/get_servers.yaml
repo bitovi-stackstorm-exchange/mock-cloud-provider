@@ -7,7 +7,7 @@ input:
   - key_name
 
 output:
-  - result: <% ctx().result %>
+  - data: <% ctx().res %>
   - server_id: <% ctx().server_id %>
 
 tasks:
@@ -18,13 +18,13 @@ tasks:
     next:
       - when: <% succeeded() and server_id = None %>
         publish:
-          - result: <% result().result.servers %>
+          - data: <% result().result.servers %>
           - published: "notify"
         do:
           - notify
       - when: <% succeeded() and server_id != None %>
         publish:
-          - servers: <% result().result.servers %>
+          - data: <% result().result.servers %>
           - published: "publish_server"
         do:
           - publish_server
@@ -34,8 +34,8 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          # result: <% ctx().servers.get(server_id) %>
-          result: <% ctx().servers %>
+          # data: <% ctx().servers.get(server_id) %>
+          data: <% ctx().servers %>
         do:
           - notify
 
