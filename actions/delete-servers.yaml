@@ -1,0 +1,13 @@
+---
+name: delete-servers
+description: Update servers
+runner_type: orquesta
+entry_point: workflows/delete-servers.yaml
+enabled: true
+parameters:
+  server_id:
+    required: true
+    type: integer
+  key_name:
+    type: string
+    default: mock-cloud-provider-serverdata

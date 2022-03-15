@@ -1,0 +1,13 @@
+---
+name: create-servers
+description: Create servers
+runner_type: orquesta
+entry_point: workflows/create-servers.yaml
+enabled: true
+parameters:
+  num_servers:
+    required: true
+    type: integer
+  key_name:
+    type: string
+    default: mock-cloud-provider-serverdata

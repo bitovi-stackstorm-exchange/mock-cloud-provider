@@ -1,0 +1,32 @@
+version: 1.0
+
+description: Update servers
+
+input:
+  - key_name
+  - num_servers
+  - server_id
+
+output:
+  - server_id: <% ctx().server_id %>
+  - servers: <% ctx().servers %>
+
+tasks:
+
+  update_config:
+    action: mock-cloud-provider.update_config
+    input:
+      key: <% ctx().key_name %>
+      server_id: <% ctx().server_id %>
+      numServers: <% ctx().num_servers %>
+    next:
+      - when: <% succeeded() %>
+        publish:
+          - servers: <% result().servers %>
+        do:
+          - notify
+          
+  notify:
+    action: core.echo
+    input:
+      message: "Server updated with id <% ctx().server_id %>. NumServers: <% ctx().num_servers %>"

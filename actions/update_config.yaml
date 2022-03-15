@@ -1,0 +1,19 @@
+# Update the config
+---
+name: update-config
+description: Update server config
+runner_type: python-script
+entry_point: update-config.py
+enabled: true
+parameters:
+  num_servers:
+    type: integer
+  server_id:
+    type: integer
+    required: true
+  key_name:
+    type: string
+    default: mock-cloud-provider-serverdata
+  action:
+    type: string
+    default: upsert

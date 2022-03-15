@@ -1,0 +1,30 @@
+version: 1.0
+
+description: Delete servers
+
+input:
+  - key_name
+  - server_id
+
+output:
+  - server_id: <% ctx().server_id %>
+
+tasks:
+
+  update_config:
+    action: mock-cloud-provider.update_config
+    input:
+      key: <% ctx().key_name %>
+      server_id: <% ctx().server_id %>
+      action: "delete"
+    next:
+      - when: <% succeeded() %>
+        publish:
+          - servers: <% result().servers %>
+        do:
+          - notify
+          
+  notify:
+    action: core.echo
+    input:
+      message: "Server removed with id <% ctx().server_id %>. NumServers: <% ctx().num_servers %>"

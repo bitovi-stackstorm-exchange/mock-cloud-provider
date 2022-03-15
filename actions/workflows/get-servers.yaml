@@ -1,0 +1,41 @@
+version: 1.0
+
+description: Get servers
+
+input:
+  - server_id
+  - key_name
+
+output:
+  - result: <% ctx().result %>
+
+tasks:
+  get_servers:
+    action: st2.kv.get_object
+    input:
+      key: <% ctx().key_name %>
+    next:
+      - when: <% succeeded() and server_id = "" %>
+        publish:
+          - result: <% result().servers %>
+        do:
+          - notify
+      - when: <% succeeded() and server_id != "" %>
+        publish:
+          - servers: <% result().servers %>
+        do:
+          - publish_server
+
+  publish_server:
+    action: core.noop
+    next:
+      - when: <% succeeded() %>
+        publish:
+          result: <% ctx().servers.[server_id] %>
+        do:
+          - notify
+
+  notify:
+    action: core.echo
+    input:
+      message: "Got server updated with id <% ctx().server_id %>."

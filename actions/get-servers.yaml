@@ -1,0 +1,14 @@
+# if serverId provided, return server
+# else, return servers list
+---
+name: get-servers
+description: Get servers. If serverId provided, return one server. Else, return all.
+runner_type: orquesta
+entry_point: workflows/get-servers.yaml
+enabled: true
+parameters:
+  server_id:
+    type: string
+  key_name:
+    type: string
+    default: mock-cloud-provider-serverdata
