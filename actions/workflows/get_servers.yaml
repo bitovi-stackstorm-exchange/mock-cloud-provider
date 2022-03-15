@@ -31,7 +31,7 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          result: <% ctx().servers[server_id] %>
+          result: <% ctx().servers.get(server_id) %>
         do:
           - notify
 
