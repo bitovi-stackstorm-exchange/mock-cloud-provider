@@ -30,5 +30,4 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          # data: <% ctx().servers.get(server_id) %>
-          data: <% ctx().servers %>
+          - data: <% ctx().servers.get(server_id) %>
