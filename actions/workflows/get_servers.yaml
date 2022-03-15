@@ -32,5 +32,3 @@ tasks:
         publish:
           # data: <% ctx().servers.get(server_id) %>
           data: <% ctx().servers %>
-        do:
-          - notify
