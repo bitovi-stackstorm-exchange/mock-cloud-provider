@@ -1,6 +1,6 @@
 version: 1.0
 
-description: Get servers
+description: Get server
 
 input:
   - server_id

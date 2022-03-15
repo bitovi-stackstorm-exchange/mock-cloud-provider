@@ -1,10 +1,10 @@
 version: 1.0
 
-description: Create servers
+description: Create server
 
 input:
   - key_name
-  - num_servers
+  - server_state
 vars:
   - server_id: ""
 
@@ -30,7 +30,7 @@ tasks:
     input:
       key_name: <% ctx().key_name %>
       server_id: <% ctx().server_id %>
-      num_servers: <% ctx().num_servers %>
+      server_state: <% ctx().server_state %>
     next:
       - when: <% succeeded() %>
         publish:
@@ -41,4 +41,4 @@ tasks:
   notify:
     action: core.echo
     input:
-      message: "New server created with id <% ctx().server_id %>. NumServers: <% ctx().num_servers %>"
+      message: "New server created with id <% ctx().server_id %>. Server State: <% ctx().server_state %>"

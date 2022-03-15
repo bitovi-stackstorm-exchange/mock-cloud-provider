@@ -1,8 +1,8 @@
 ---
-name: delete_servers
-description: Update servers
+name: delete_server
+description: Update server
 runner_type: orquesta
-entry_point: workflows/delete_servers.yaml
+entry_point: workflows/delete_server.yaml
 enabled: true
 parameters:
   server_id:

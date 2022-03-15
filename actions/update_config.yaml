@@ -6,8 +6,6 @@ runner_type: python-script
 entry_point: update_config.py
 enabled: true
 parameters:
-  num_servers:
-    type: string
   server_id:
     type: string
     required: true
@@ -17,3 +15,6 @@ parameters:
   action:
     type: string
     default: upsert
+  server_state:
+    type: string
+    default: running

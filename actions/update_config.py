@@ -6,7 +6,7 @@ from st2client.client import Client
 from st2client.models import KeyValuePair
 
 class UpdateConfigAction(Action):
-    def run(self, key_name, server_id, num_servers, action):
+    def run(self, key_name, server_id, action, server_state):
       self.client = Client(base_url='http://localhost')
 
       servers_object = {}
@@ -23,10 +23,10 @@ class UpdateConfigAction(Action):
         server_object = servers_object.get(server_id)
 
         if server_object:
-          server_object["num_servers"] = num_servers
+          server_object["server_state"] = server_state
         else:
           servers_object[server_id] = {
-            "num_servers": num_servers
+            "server_state": server_state
           }
 
       self.client.keys.update(KeyValuePair(name=key_name, value=json.dumps(servers_object)))

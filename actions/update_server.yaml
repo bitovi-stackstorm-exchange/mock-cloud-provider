@@ -1,16 +1,16 @@
 # provide number of servers
 ---
-name: update_servers
-description: Update servers
+name: update_server
+description: Update server
 runner_type: orquesta
 entry_point: workflows/update_servers.yaml
 enabled: true
 parameters:
-  num_servers:
-    required: true
-    type: string
   server_id:
     type: string
   key_name:
     type: string
     default: mock-cloud-provider-serverdata
+  server_state:
+    type: string
+    default: running

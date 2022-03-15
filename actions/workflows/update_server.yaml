@@ -1,9 +1,10 @@
 version: 1.0
 
-description: Delete servers
+description: Update server
 
 input:
   - key_name
+  - server_state
   - server_id
 
 output:
@@ -17,7 +18,7 @@ tasks:
     input:
       key_name: <% ctx().key_name %>
       server_id: <% ctx().server_id %>
-      action: "delete"
+      server_state: <% ctx().server_state %>
     next:
       - when: <% succeeded() %>
         publish:
@@ -28,4 +29,4 @@ tasks:
   notify:
     action: core.echo
     input:
-      message: "Server removed with id <% ctx().server_id %>."
+      message: "Server updated with id <% ctx().server_id %>. Server State: <% ctx().server_state %>"
