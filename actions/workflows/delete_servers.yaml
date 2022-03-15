@@ -27,4 +27,4 @@ tasks:
   notify:
     action: core.echo
     input:
-      message: "Server removed with id <% ctx().server_id %>. NumServers: <% ctx().num_servers %>"
+      message: "Server removed with id <% ctx().server_id %>."
